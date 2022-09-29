@@ -1,4 +1,3 @@
-// Module
 import { deleteAsync } from "del";
 import Gulp from "gulp";
 import GulpPug from "gulp-pug";
@@ -36,7 +35,7 @@ const routes = {
   },
 };
 
-// Task
+// Bundler
 const GHPage = () => Gulp.src(routes.publish).pipe(GulpGHPage());
 const Watch = () => {
   Gulp.watch(routes.img.watch, Webp);
@@ -60,7 +59,7 @@ const Scss = () =>
 const Pug = () =>
   Gulp.src(routes.pug.src).pipe(GulpPug()).pipe(Gulp.dest(routes.pug.dest));
 
-// Gulp cli
+// Builder
 const prepare = Gulp.series([Delete, Image, Webp]);
 const assets = Gulp.series([Pug, Scss]);
 const postDev = Gulp.parallel([Webserver, Watch]);
